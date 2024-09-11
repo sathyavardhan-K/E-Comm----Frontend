@@ -41,7 +41,6 @@ export const AuthProvider = ({ children }) => {
     // Store token and userId in localStorage
     localStorage.setItem('authToken', token);
     localStorage.setItem('userId', id);
-
     setAuthToken(token);
     setUserId(id);
     setIsAuthenticated(true);

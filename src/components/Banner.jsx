@@ -17,7 +17,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-64 overflow-hidden z-0"> {/* Set z-index to place correctly in the stack */}
+    <div className="relative w-full h-64 overflow-hidden z-0 md:h-80 lg:h-96 hidden md:block"> {/* Hide on mobile */}
       <div
         className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${slideIndex * 100}%)` }}
@@ -30,14 +30,14 @@ const Banner = () => {
       </div>
       <button
         onClick={() => moveSlide(-1)}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-20"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-20 md:p-4 md:left-6"
         aria-label="Previous slide"
       >
         &#10094;
       </button>
       <button
         onClick={() => moveSlide(1)}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-20"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-20 md:p-4 md:right-6"
         aria-label="Next slide"
       >
         &#10095;

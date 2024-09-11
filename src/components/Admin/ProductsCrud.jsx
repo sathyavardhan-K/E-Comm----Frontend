@@ -196,7 +196,7 @@ function ProductCrud() {
   {products.map(product => (
     <tr key={product._id} className="hover:bg-gray-50">
       <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{product.productName}</td>
-      <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{product.price}</td>
+      <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{`₹${product.price}`}</td>
       <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{product.description}</td>
       <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{product.brandName}</td>
       <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{product.availableStockQuantity}</td>

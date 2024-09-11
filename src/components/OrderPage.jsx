@@ -13,6 +13,8 @@ const OrderPage = () => {
   const [userCartId, setUserCartId] = useState(null);
   const [finalPrice, setFinalPrice] = useState(0);
 
+  const MAX_QUANTITY = 20;
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -100,6 +102,10 @@ const OrderPage = () => {
       if (item.product_id === productId) {
         const newQuantity = item.orderQuantity + change;
         if (newQuantity < 1) return item; // Prevent quantity less than 1
+        if (newQuantity > MAX_QUANTITY) {
+          setError(`Maximum order quantity is ${MAX_QUANTITY}. You've reached this limit.`);
+          return item; // Prevent updating the quantity
+        }
         return { ...item, orderQuantity: newQuantity };
       }
       return item;

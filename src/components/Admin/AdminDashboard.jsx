@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import Cards from './Cards';
 
 function AdminDashboard() {
   const location = useLocation();
@@ -40,13 +41,33 @@ function AdminDashboard() {
               Product Management
             </Link>
           </li>
+
+          <li>
+            <Link
+              to="/admin/categories"
+              className={`block py-2 px-4 rounded hover:bg-gray-700 ${
+                currentPath === '/admin/categories' ? 'bg-gray-600' : ''
+              }`}
+            >
+              Category Management
+            </Link>
+          </li>
         </ul>
       </aside>
 
+      {/* Main Content Section */}
       <div className="flex-1 flex flex-col">
-     
+        <header className="bg-white shadow p-4">
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl font-semibold text-gray-800">Admin Dashboard</h1>
+          </div>
+        </header>
+
+        {/* Main Content Wrapper */}
         <main className="flex-1 p-6 overflow-auto">
-          <Outlet /> {/* Renders the nested route components */}
+          {/* Using the updated Cards component to display user and order counts */}
+          <Cards />
+          <Outlet /> {/* This renders the nested route components */}
         </main>
       </div>
     </div>

@@ -27,6 +27,27 @@ export const AuthProvider = ({ children }) => {
       console.warn('Token or userId not found in local storage.');
       logout(); // Clear any invalid session
     }
+
+    // Listener to handle popstate event only when navigating to the login page
+    const handlePopState = () => {
+      const loginPath = '/login'; // Define your login page path
+      const currentPath = window.location.pathname; // Get current path
+
+      console.log('Current path on popstate:', currentPath);
+
+      // Check if navigating to the login page
+      if (currentPath === loginPath) {
+        logout();
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+    
   }, []);
 
    // Login function to save token and userId to localStorage
@@ -57,6 +78,7 @@ export const AuthProvider = ({ children }) => {
     setAuthToken(null);
     setUserId(null);
     setUserOrders({});
+    
   };
 
   const addOrder = (userId, newProduct) => {

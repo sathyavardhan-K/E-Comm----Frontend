@@ -76,7 +76,7 @@ function ProductCrud() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">Product CRUD</h2>
+      <h2 className="text-3xl font-bold mb-6 text-gray-800">Product Management & Operations</h2>
       
       {/* Toggle Add New Product Form */}
       <button

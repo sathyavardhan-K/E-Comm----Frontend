@@ -39,15 +39,13 @@ function App() {
             <Route path="/order-details" element={<OrderDetailsPage />} />
             
             {/* Admin dashboard routes */}
-
-          
+            
             <Route path="/admin" element={<AdminDashboard />}>
               <Route path="users" element={<AllUsers />} />
               <Route path="orders" element={<AllOrders />} />
               <Route path="products" element={<ProductCrud />} />
               <Route path="categories" element={<AllCategories/>}/>
             </Route>
-
 
           </Routes>
         </main>

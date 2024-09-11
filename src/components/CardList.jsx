@@ -70,7 +70,7 @@ const CardList = () => {
           type="text"
           value={searchQuery}
           onChange={handleSearchInput}
-          placeholder="Search products"
+          placeholder="Search by product or description"
           className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
         />
         <svg

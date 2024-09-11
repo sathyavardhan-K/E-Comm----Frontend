@@ -109,10 +109,7 @@ const ProductDetail = () => {
     }
   };
 
-  const toggleDescription = () => {
-    setExpandedDesc(prev => !prev);
-  };
-
+  
   return (
     <div className="p-6 mt-10 max-w-6xl mx-auto mb-10">
       {message && (
@@ -140,16 +137,7 @@ const ProductDetail = () => {
               >
                 {product.description}
               </p>
-              <button
-                onClick={toggleDescription}
-                className="absolute top-0 right-0 mt-2 mr-2 text-gray-600 hover:text-gray-800"
-              >
-                {expandedDesc ? (
-                  <AiOutlineEyeInvisible size={24} />
-                ) : (
-                  <AiOutlineEye size={24} />
-                )}
-              </button>
+              
             </div>
             <div className="flex items-center justify-between mb-6">
               <p className="text-2xl font-bold text-gray-900">
@@ -163,7 +151,7 @@ const ProductDetail = () => {
                 {product.availableStockQuantity > 0 ? 'In Stock' : 'Out of Stock'}
               </span>
             </div>
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-end mt-4">
               <button
                 onClick={handleBuyNow}
                 className="bg-blue-500 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"

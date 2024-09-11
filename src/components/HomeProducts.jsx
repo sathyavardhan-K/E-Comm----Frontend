@@ -66,7 +66,7 @@ const HomeProducts = ({ products }) => {
         </button>
 
         {isDropdownOpen && (
-          <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-2 ring-black ring-opacity-5 focus:outline-none">
             <div className="p-1">
               <button
                 onClick={() => { setPriceRange('all'); setIsDropdownOpen(false); }}

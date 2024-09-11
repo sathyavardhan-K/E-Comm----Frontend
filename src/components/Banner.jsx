@@ -17,7 +17,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-64 overflow-hidden z-0 md:h-80 lg:h-96 hidden md:block"> {/* Hide on mobile */}
+    <div className="relative w-full h-64 overflow-hidden z-0 md:h-52 lg:h-52 hidden md:block"> {/* Hide on mobile */}
       <div
         className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${slideIndex * 100}%)` }}

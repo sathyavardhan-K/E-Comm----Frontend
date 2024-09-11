@@ -153,6 +153,7 @@ const ProductsPage = () => {
             <div
               key={product._id}
               className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col"
+              style={{ minHeight: '400px' }}
             >
               {/* Product Image */}
               <img

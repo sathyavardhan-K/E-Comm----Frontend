@@ -20,6 +20,8 @@ function Signup() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("Target", e.target);
+    
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
 

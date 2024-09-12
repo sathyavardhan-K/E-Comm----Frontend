@@ -115,7 +115,7 @@ const OrderTrackPage = () => {
       component="main" 
       maxWidth="sm" 
       sx={{ 
-        mt: 10, mb: 10,
+        mt: 10,
         mb: { xs: 5, sm: 0 } // Add mb: 5 for mobile (xs) and 0 for larger screens
       }}
     >

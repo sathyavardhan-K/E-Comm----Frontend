@@ -96,7 +96,7 @@ const OrderPage = () => {
     console.log(`Total price to pay: ₹${finalPrice}`);
     navigate('/payment', { state: { cart, finalPrice, address } });
   };
-
+  
   const handleQuantityChange = async (productId, change) => {
     const updatedCart = cart.map(item => {
       if (item.product_id === productId) {

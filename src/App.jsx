@@ -19,6 +19,7 @@ import ProductCrud from './components/Admin/ProductsCrud';
 import OrderDetailsPage from './components/OrderDetailsPage';
 import ProductDetail from './components/ProductDetail';
 import AllCategories from './components/Admin/AllCategories';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App() {
@@ -38,14 +39,25 @@ function App() {
             <Route path="/order-success" element={<OrderTrackPage />} />
             <Route path="/order-details" element={<OrderDetailsPage />} />
             
-            {/* Admin dashboard routes */}
+            {/* Admin dashboard routes
+             
             
-            <Route path="/admin" element={<AdminDashboard />}>
+             <Route path="/admin" element={<AdminDashboard />}>
               <Route path="users" element={<AllUsers />} />
               <Route path="orders" element={<AllOrders />} />
               <Route path="products" element={<ProductCrud />} />
               <Route path="categories" element={<AllCategories/>}/>
             </Route>
+             */}
+             
+            {/* Admin dashboard routes wrapped in ProtectedRoute */}
+            <Route path="/admin" element={<ProtectedRoute />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="users" element={<AllUsers />} />
+                <Route path="orders" element={<AllOrders />} />
+                <Route path="products" element={<ProductCrud />} />
+                <Route path="categories" element={<AllCategories />} />
+              </Route>
 
           </Routes>
         </main>

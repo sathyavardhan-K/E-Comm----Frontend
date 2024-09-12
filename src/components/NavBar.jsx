@@ -26,7 +26,7 @@
 //     const fetchUsername = async () => {
 //       if (userId) {
 //         try {
-//           const response = await axios.get(`http://localhost:3000/api/user/${userId}`);
+//           const response = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/user/${userId}`);
 //           setUsername(response.data.username);
           
 //           setUserType(response.data.userType);
@@ -41,7 +41,7 @@
 //     const fetchCartCount = async () => {
 //       if (userId) {
 //         try {
-//           const response = await axios.get('http://localhost:3000/api/carts');
+//           const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/carts');
 //           const carts = response.data;
 //           const userCart = carts.find(cart => cart.created_by === userId);
 //           if (userCart && userCart.products) {
@@ -266,7 +266,7 @@ const Navbar = () => {
     const fetchUsername = async () => {
       if (userId) {
         try {
-          const response = await axios.get(`http://localhost:3000/api/user/${userId}`);
+          const response = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/user/${userId}`);
           setUsername(response.data.username);
           setUserType(response.data.userType);
           console.log(response.data.userType);
@@ -279,7 +279,7 @@ const Navbar = () => {
     const fetchCartCount = async () => {
       if (userId) {
         try {
-          const response = await axios.get('http://localhost:3000/api/carts');
+          const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/carts');
           const carts = response.data;
           const userCart = carts.find(cart => cart.created_by === userId);
           if (userCart && userCart.products) {

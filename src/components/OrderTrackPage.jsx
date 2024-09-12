@@ -25,7 +25,7 @@ const OrderTrackPage = () => {
   const fetchOrderStatus = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3000/api/orders/${_id}`, {
+      const response = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/orders/${_id}`, {
         headers: {
           'Authorization': `Bearer ${authToken}`
         }
@@ -50,7 +50,7 @@ const OrderTrackPage = () => {
   const clearCart = async () => {
     try {
       // Fetch the cart associated with the user
-      const cartResponse = await axios.get('http://localhost:3000/api/carts', {
+      const cartResponse = await axios.get('https://e-comm-backend-dc49.onrender.com/api/carts', {
         headers: {
           'Authorization': `Bearer ${authToken}`
         }
@@ -71,7 +71,7 @@ const OrderTrackPage = () => {
         console.log("Clearing Cart with ID:", userCart._id, "with details:", clearCartDetails);
         
         // Update the cart to clear products and payment
-        const response = await axios.put(`http://localhost:3000/api/carts/clearCart/${userCart._id}`, clearCartDetails, {
+        const response = await axios.put(`https://e-comm-backend-dc49.onrender.com/api/carts/clearCart/${userCart._id}`, clearCartDetails, {
           headers: {
             'Authorization': `Bearer ${authToken}`
           }
@@ -81,7 +81,7 @@ const OrderTrackPage = () => {
         console.log('Cart cleared successfully:', response.data);
   
         // Check if the products array is empty after clearing
-        const updatedCartResponse = await axios.get(`http://localhost:3000/api/carts/${userCart._id}`, {
+        const updatedCartResponse = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/carts/${userCart._id}`, {
           headers: {
             'Authorization': `Bearer ${authToken}`
           }

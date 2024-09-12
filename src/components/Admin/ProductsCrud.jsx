@@ -23,7 +23,7 @@ function ProductCrud() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/products'); // Adjust API endpoint as needed
+        const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/products'); // Adjust API endpoint as needed
         setProducts(response.data);
       } catch (err) {
         setError('Error fetching products');
@@ -34,7 +34,7 @@ function ProductCrud() {
 
   const handleAddProduct = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/products', newProduct);
+      const response = await axios.post('https://e-comm-backend-dc49.onrender.com/api/products', newProduct);
       setProducts([...products, response.data]);
       setNewProduct({
         productName: '',
@@ -57,7 +57,7 @@ function ProductCrud() {
 
   const handleEditProduct = async (product) => {
     try {
-      const response = await axios.put(`http://localhost:3000/api/products/${product._id}`, editingProduct);
+      const response = await axios.put(`https://e-comm-backend-dc49.onrender.com/api/products/${product._id}`, editingProduct);
       setProducts(products.map(p => (p._id === product._id ? response.data : p)));
       setEditingProduct(null);
     } catch (err) {
@@ -67,7 +67,7 @@ function ProductCrud() {
 
   const handleDeleteProduct = async (productId) => {
     try {
-      await axios.delete(`http://localhost:3000/api/products/${productId}`);
+      await axios.delete(`https://e-comm-backend-dc49.onrender.com/api/products/${productId}`);
       setProducts(products.filter(p => p._id !== productId));
     } catch (err) {
       setError('Error deleting product');

@@ -12,7 +12,7 @@ function AllUsers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/user', {
+        const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/user', {
           headers: {
             'Authorization': `Bearer ${authToken}` // Use token from context
           }
@@ -30,7 +30,7 @@ function AllUsers() {
   const updateUserType = async (userId, newUserType) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/user/${userId}`,
+        `https://e-comm-backend-dc49.onrender.com/api/user/${userId}`,
         { userType: newUserType }, // Payload being sent
         {
           headers: {

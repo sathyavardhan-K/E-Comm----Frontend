@@ -17,8 +17,8 @@ function Cards() {
     const fetchCounts = async () => {
       try {
         const [usersResponse, ordersResponse] = await Promise.all([
-          axios.get('http://localhost:3000/api/user'), // Replace with your actual user API endpoint
-          axios.get('http://localhost:3000/api/orders'), // Replace with your actual orders API endpoint
+          axios.get('https://e-comm-backend-dc49.onrender.com/api/user'), // Replace with your actual user API endpoint
+          axios.get('https://e-comm-backend-dc49.onrender.com/api/orders'), // Replace with your actual orders API endpoint
         ]);
 
         // Set the user count

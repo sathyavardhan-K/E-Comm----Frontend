@@ -29,7 +29,7 @@ function Login() {
     setError(null);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/user/login", formData);
+      const response = await axios.post("https://e-comm-backend-dc49.onrender.com/api/user/login", formData);
       console.log("Login Success:", response);
 
       const { token, _id, userType } = response.data;
@@ -139,7 +139,7 @@ export default Login;
 //     setError(null);
 
 //     try {
-//       const response = await axios.post("http://localhost:3000/api/user/login", formData);
+//       const response = await axios.post("https://e-comm-backend-dc49.onrender.com/api/user/login", formData);
 //       console.log("Login Success:", response);
 
 //       const { token, _id, userType } = response.data;

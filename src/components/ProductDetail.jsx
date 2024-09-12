@@ -16,7 +16,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/products/${productId}`);
+        const response = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/products/${productId}`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching product:', error.response?.data || error.message);
@@ -32,7 +32,7 @@ const ProductDetail = () => {
       if (!isAuthenticated || !userId) return;
 
       try {
-        const response = await axios.get('http://localhost:3000/api/carts', {
+        const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/carts', {
           headers: { 'Authorization': `Bearer ${authToken}` }
         });
         const carts = response.data;
@@ -62,7 +62,7 @@ const ProductDetail = () => {
     if (!product || !userCartId) return;
 
     try {
-      const cartResponse = await axios.get(`http://localhost:3000/api/carts/${userCartId}`, {
+      const cartResponse = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/carts/${userCartId}`, {
         headers: { 'Authorization': `Bearer ${authToken}` }
       });
 
@@ -86,7 +86,7 @@ const ProductDetail = () => {
       };
 
       const updateResponse = await axios.put(
-        `http://localhost:3000/api/carts/${userCartId}`,
+        `https://e-comm-backend-dc49.onrender.com/api/carts/${userCartId}`,
         updatedCartData,
         {
           headers: {

@@ -15,7 +15,7 @@
 //     useEffect(() => {
 //         if (userId) {
 //             axios
-//                 .get(`http://localhost:3000/api/orders/user/${userId}`)
+//                 .get(`https://e-comm-backend-dc49.onrender.com/api/orders/user/${userId}`)
 //                 .then((response) => {
 //                     setOrderDetails(response.data.reverse());
 //                     setLoading(false);
@@ -168,7 +168,7 @@ const OrderDetailsPage = () => {
     useEffect(() => {
         if (userId) {
             axios
-                .get(`http://localhost:3000/api/orders/user/${userId}`)
+                .get(`https://e-comm-backend-dc49.onrender.com/api/orders/user/${userId}`)
                 .then((response) => {
                     setOrderDetails(response.data.reverse());
                     setLoading(false);

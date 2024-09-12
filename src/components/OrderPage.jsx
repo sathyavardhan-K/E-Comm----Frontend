@@ -25,12 +25,12 @@ const OrderPage = () => {
 
     const fetchUserAddressAndCart = async () => {
       try {
-        const addressResponse = await axios.get(`http://localhost:3000/api/user/${userId}`);
+        const addressResponse = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/user/${userId}`);
         setAddress(addressResponse.data);
 
         const cartId = await getCartIdByUserId(userId);
         if (cartId) {
-          const cartDetailsResponse = await axios.get(`http://localhost:3000/api/carts/${cartId}`);
+          const cartDetailsResponse = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/carts/${cartId}`);
           setCart(cartDetailsResponse.data.products || []);
         }
       } catch (err) {
@@ -44,7 +44,7 @@ const OrderPage = () => {
 
   const getCartIdByUserId = async (userId) => {
     try {
-      const response = await axios.get('http://localhost:3000/api/carts');
+      const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/carts');
       const carts = response.data;
       const userCart = carts.find(cart => cart.created_by === userId);
 
@@ -70,7 +70,7 @@ const OrderPage = () => {
 
   const saveAddress = async () => {
     try {
-      await axios.put(`http://localhost:3000/api/user/${userId}`, address);
+      await axios.put(`https://e-comm-backend-dc49.onrender.com/api/user/${userId}`, address);
       setIsEditingAddress(false);
       setError(null);
     } catch (err) {
@@ -117,7 +117,7 @@ const OrderPage = () => {
         console.error("User cart ID is not defined.");
         return;
       }
-      await axios.put(`http://localhost:3000/api/carts/${userCartId}`, { products: updatedCart });
+      await axios.put(`https://e-comm-backend-dc49.onrender.com/api/carts/${userCartId}`, { products: updatedCart });
     } catch (error) {
       console.error("Failed to update quantity:", error);
       setCart(cart); // Revert back to old cart in case of error
@@ -130,7 +130,7 @@ const OrderPage = () => {
         products: [{ product_id: productId, remove: true }]
       };
 
-      const response = await axios.put(`http://localhost:3000/api/carts/${userCartId}`, payload);
+      const response = await axios.put(`https://e-comm-backend-dc49.onrender.com/api/carts/${userCartId}`, payload);
       if (response.data && response.data.products) {
         setCart(response.data.products);
       } else {

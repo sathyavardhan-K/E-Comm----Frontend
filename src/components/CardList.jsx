@@ -13,7 +13,7 @@ const CardList = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/category');
+        const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/category');
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -28,7 +28,7 @@ const CardList = () => {
       try {
         const responses = await Promise.all(
           categories.map((category) =>
-            axios.get(`http://localhost:3000/api/products?category=${category._id}`)
+            axios.get(`https://e-comm-backend-dc49.onrender.com/api/products?category=${category._id}`)
           )
         );
         const allProducts = responses.flatMap(response => response.data);

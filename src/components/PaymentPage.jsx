@@ -98,7 +98,7 @@ const PaymentPage = () => {
 
   const getCartIdByUserId = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/carts');
+      const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/carts');
       const carts = response.data;
       const userCart = carts.find((cart) => cart.created_by === userId);
 
@@ -138,14 +138,14 @@ const PaymentPage = () => {
       };
 
       const updateResponse = await axios.put(
-        `http://localhost:3000/api/carts/${cartId}`,
+        `https://e-comm-backend-dc49.onrender.com/api/carts/${cartId}`,
         cartUpdateDetails
       );
       console.log('Cart updated response:', updateResponse.data);
 
       //Get Product Details
 
-      const productDetails = await axios.get(`http://localhost:3000/api/carts/${cartId}`);
+      const productDetails = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/carts/${cartId}`);
       console.log("Details",productDetails.data.payment);
       
 
@@ -161,7 +161,7 @@ const PaymentPage = () => {
       console.log('Order details:', orderDetails);
 
       // Send POST request to create the order
-      const response = await axios.post('http://localhost:3000/api/orders', orderDetails);
+      const response = await axios.post('https://e-comm-backend-dc49.onrender.com/api/orders', orderDetails);
       console.log("Order Resp", response.data);
       
       const { _id } = response.data; // Extract the order ID from the response

@@ -38,7 +38,7 @@ function Signup() {
     // Log the form data to inspect it
     console.log("Form Data to be sent:", userData);
 
-    axios.post("http://localhost:3000/api/user", userData)
+    axios.post("https://e-comm-backend-dc49.onrender.com/api/user", userData)
       .then(result => {
         console.log("Signup Success:", result);
 
@@ -67,7 +67,7 @@ function Signup() {
       }
     };
 
-    axios.post("http://localhost:3000/api/carts", cartData)
+    axios.post("https://e-comm-backend-dc49.onrender.com/api/carts", cartData)
       .then(response => {
         console.log("Cart created successfully:", response.data);
       })

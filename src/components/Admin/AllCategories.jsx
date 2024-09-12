@@ -14,7 +14,7 @@ function CategoryCrud() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/category'); // Adjust API endpoint as needed
+        const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/category'); // Adjust API endpoint as needed
         setCategories(response.data);
       } catch (err) {
         setError('Error fetching categories');
@@ -25,7 +25,7 @@ function CategoryCrud() {
 
   const handleAddCategory = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/category', newCategory);
+      const response = await axios.post('https://e-comm-backend-dc49.onrender.com/api/category', newCategory);
       setCategories([...categories, response.data]);
       setNewCategory({
         categoryName: '',
@@ -39,7 +39,7 @@ function CategoryCrud() {
 
   const handleEditCategory = async (category) => {
     try {
-      const response = await axios.put(`http://localhost:3000/api/category/${category._id}`, editingCategory);
+      const response = await axios.put(`https://e-comm-backend-dc49.onrender.com/api/category/${category._id}`, editingCategory);
       setCategories(categories.map(c => (c._id === category._id ? response.data : c)));
       setEditingCategory(null);
     } catch (err) {
@@ -49,7 +49,7 @@ function CategoryCrud() {
 
   const handleDeleteCategory = async (categoryId) => {
     try {
-      await axios.delete(`http://localhost:3000/api/category/${categoryId}`);
+      await axios.delete(`https://e-comm-backend-dc49.onrender.com/api/category/${categoryId}`);
       setCategories(categories.filter(c => c._id !== categoryId));
     } catch (err) {
       setError('Error deleting category');

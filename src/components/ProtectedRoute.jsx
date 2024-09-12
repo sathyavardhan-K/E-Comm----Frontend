@@ -14,7 +14,7 @@ const ProtectedRoute = () => {
     // Fetch user data to determine if the user is an admin
     const checkAdminStatus = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/user/${userId}`, {
+        const response = await axios.get(`https://e-comm-backend-dc49.onrender.com/api/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${authToken}`, // Include the auth token in the request headers
           },

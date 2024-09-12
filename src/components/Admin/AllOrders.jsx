@@ -10,7 +10,7 @@ function AllOrders() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/orders'); // Adjust API endpoint as needed
+        const response = await axios.get('https://e-comm-backend-dc49.onrender.com/api/orders'); // Adjust API endpoint as needed
         setOrders(response.data || []); // Handle case where response data might be undefined
       } catch (err) {
         setError('Error fetching orders');
@@ -24,7 +24,7 @@ function AllOrders() {
   // Handler to update delivery status
   const updateDeliveryStatus = async (orderId, newStatus) => {
     try {
-      await axios.put(`http://localhost:3000/api/orders/${orderId}`, {
+      await axios.put(`https://e-comm-backend-dc49.onrender.com/api/orders/${orderId}`, {
         status: newStatus,
       });
       // Update the order's status in the local state

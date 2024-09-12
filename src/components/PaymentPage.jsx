@@ -24,22 +24,22 @@ const PaymentMethodModal = ({ isOpen, onClose, onPlaceOrder }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-        <h2 className="text-2xl font-semibold mb-6">Select Payment Method</h2>
-        <div className="flex flex-col gap-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+      <div className="bg-white p-6 md:p-6 rounded-lg shadow-lg max-w-sm w-full">
+        <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">Select Payment Method</h2>
+        <div className="flex flex-col gap-3">
           <button
             onClick={() => handlePaymentMethodSelection('Cash on Delivery')}
-            className="flex items-center bg-orange-500 text-white py-3 px-4 rounded hover:bg-orange-600 transition duration-300"
+            className="flex items-center justify-center bg-orange-500 text-white py-2 px-3 md:py-3 md:px-4 rounded hover:bg-orange-600 transition duration-300 text-sm md:text-base"
           >
-            <FaCashRegister className="w-6 h-6 mr-3" />
+            <FaCashRegister className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
             Cash on Delivery
           </button>
           <button
             onClick={() => handlePaymentMethodSelection('Gpay')}
-            className="flex items-center bg-indigo-500 text-white py-3 px-4 rounded hover:bg-indigo-600 transition duration-300"
+            className="flex items-center justify-center bg-indigo-500 text-white py-2 px-3 md:py-3 md:px-4 rounded hover:bg-indigo-600 transition duration-300 text-sm md:text-base"
           >
-            <FaGooglePay className="w-6 h-6 mr-3" />
+            <FaGooglePay className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
             Gpay
           </button>
         </div>
@@ -51,7 +51,7 @@ const PaymentMethodModal = ({ isOpen, onClose, onPlaceOrder }) => {
         {isPaid && (
           <button
             onClick={handlePlaceOrder}
-            className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300 mr-5"
+            className="mt-4 bg-blue-500 text-white py-2 px-4 md:py-3 md:px-6 rounded hover:bg-blue-600 transition duration-300 mr-5"
           >
             Place Order
           </button>
@@ -59,7 +59,7 @@ const PaymentMethodModal = ({ isOpen, onClose, onPlaceOrder }) => {
 
         <button
           onClick={onClose}
-          className="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition duration-300"
+          className="mt-4 bg-red-500 text-white py-2 px-4 md:py-3 md:px-6 rounded hover:bg-red-600 transition duration-300"
         >
           Close
         </button>

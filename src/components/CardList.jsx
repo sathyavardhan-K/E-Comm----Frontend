@@ -8,6 +8,7 @@ const CardList = () => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [slideIndex, setSlideIndex] = useState(0);
+  const [cardsToShow, setCardsToShow] = useState(3); // State to manage cards per slide
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -40,6 +41,23 @@ const CardList = () => {
     fetchProducts();
   }, [categories]);
 
+  // Handle window resize to adjust the number of cards per slide
+  useEffect(() => {
+    const updateCardsToShow = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setCardsToShow(1); // Mobile view
+      } else {
+        setCardsToShow(3); // Desktop view
+      }
+    };
+
+    updateCardsToShow(); // Initial check
+    window.addEventListener('resize', updateCardsToShow); // Update on resize
+
+    return () => window.removeEventListener('resize', updateCardsToShow); // Cleanup listener
+  }, []);
+
   const handleSearchInput = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -54,8 +72,6 @@ const CardList = () => {
     product.productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     product.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const cardsToShow = 3;
 
   const moveSlide = (step) => {
     const totalSlides = Math.ceil(filteredCategories.length / cardsToShow);
@@ -86,18 +102,17 @@ const CardList = () => {
       </div>
     
       {/* Slider with Cards */}
-     
       <h3 className="text-2xl font-bold mb-3 mt-3 text-gray-800 flex flex-col items-start">Categories</h3>
       <div className="relative w-full overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${slideIndex * 100}%)` }}
         >
-          {/* Group cards into sets of 3 for sliding */}
+          {/* Group cards into sets based on cardsToShow */}
           {Array.from({ length: Math.ceil(filteredCategories.length / cardsToShow) }, (_, slide) => (
             <div key={slide} className="flex min-w-full">
               {filteredCategories.slice(slide * cardsToShow, slide * cardsToShow + cardsToShow).map((category) => (
-                <div className="w-1/3 px-4 py-6" key={category._id}>
+                <div className={`w-full md:w-1/${cardsToShow} px-4 py-6`} key={category._id}>
                   <Card
                     title={category.categoryName}
                     imageUrl={category.categoryImage}

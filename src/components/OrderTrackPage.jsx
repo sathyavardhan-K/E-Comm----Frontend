@@ -111,7 +111,14 @@ const OrderTrackPage = () => {
   };
 
   return (
-    <Container component="main" maxWidth="sm" sx={{ mt: 10 }}>
+    <Container 
+      component="main" 
+      maxWidth="sm" 
+      sx={{ 
+        mt: 10, mb: 10,
+        mb: { xs: 5, sm: 0 } // Add mb: 5 for mobile (xs) and 0 for larger screens
+      }}
+    >
       <Paper elevation={3} sx={{ padding: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 2 }}>
           Order Tracking
@@ -153,7 +160,7 @@ const OrderTrackPage = () => {
               <Button
                 variant="contained"
                 color="secondary"
-                sx={{ mt: 1, ml: 2 }}
+                sx={{ mt: 1, ml: 1 }}
                 onClick={handleViewDetails}
               >
                 View Order Details

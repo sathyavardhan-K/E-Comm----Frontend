@@ -1,5 +1,5 @@
 // src/App.jsx
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Signup from './components/SignUp';
 import Login from './components/Login';
@@ -49,7 +49,7 @@ function App() {
               <Route path="categories" element={<AllCategories/>}/>
             </Route>
              */}
-             
+
             {/* Admin dashboard routes wrapped in ProtectedRoute */}
             <Route path="/admin" element={<ProtectedRoute />}>
                 <Route index element={<AdminDashboard />} />

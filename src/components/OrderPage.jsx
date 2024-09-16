@@ -13,6 +13,8 @@ const OrderPage = () => {
   const [userCartId, setUserCartId] = useState(null);
   const [finalPrice, setFinalPrice] = useState(0);
 
+  const [formErrors, setFormErrors] = useState({});
+
   const MAX_QUANTITY = 20;
 
   const navigate = useNavigate();
@@ -64,11 +66,49 @@ const OrderPage = () => {
   const handleAddressChange = (field, value) => {
     setAddress((prev) => ({
       ...prev,
-      [field]: value,
+      [field]: value.trim(),
     }));
+
+    // Validation logic
+    switch (field) {
+      case 'phno':
+        if (!/^\d{10}$/.test(value)) {
+          setFormErrors((prevErrors) => ({
+            ...prevErrors,
+            phno: 'Phone number must be exactly 10 digits.',
+          }));
+        } else {
+          setFormErrors((prevErrors) => ({ ...prevErrors, phno: null }));
+        }
+        break;
+      default:
+        if (value.trim() === '') {
+          setFormErrors((prevErrors) => ({
+            ...prevErrors,
+            [field]: `${field.charAt(0).toUpperCase() + field.slice(1)} is required.`,
+          }));
+        } else {
+          setFormErrors((prevErrors) => ({ ...prevErrors, [field]: null }));
+        }
+        break;
+    }
   };
 
   const saveAddress = async () => {
+    const requiredFields = ['phno', 'shippingAddress', 'billingAddress', 'city', 'state', 'pincode'];
+    const errors = {};
+
+    requiredFields.forEach(field => {
+      if (!address[field] || address[field].trim() === '') {
+        errors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} is required.`;
+      }
+    });
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
     try {
       await axios.put(`https://e-comm-backend-dc49.onrender.com/api/user/${userId}`, address);
       setIsEditingAddress(false);
@@ -159,6 +199,7 @@ const OrderPage = () => {
               placeholder="Phone Number"
               className="border p-2 rounded w-full mb-2"
             />
+            {formErrors.phno && <p className="text-red-500">{formErrors.phno}</p>}
             <input
               type="text"
               value={address.shippingAddress || ''}
@@ -166,6 +207,8 @@ const OrderPage = () => {
               placeholder="Shipping Address"
               className="border p-2 rounded w-full mb-2"
             />
+            {formErrors.shippingAddress && <p className="text-red-500">{formErrors.shippingAddress}</p>}
+
             <input
               type="text"
               value={address.billingAddress || ''}
@@ -173,6 +216,8 @@ const OrderPage = () => {
               placeholder="Billing Address"
               className="border p-2 rounded w-full mb-2"
             />
+            {formErrors.billingAddress && <p className="text-red-500">{formErrors.billingAddress}</p>}
+
             <input
               type="text"
               value={address.city || ''}
@@ -180,6 +225,8 @@ const OrderPage = () => {
               placeholder="City"
               className="border p-2 rounded w-full mb-2"
             />
+             {formErrors.city && <p className="text-red-500">{formErrors.city}</p>}
+
             <input
               type="text"
               value={address.state || ''}
@@ -187,6 +234,8 @@ const OrderPage = () => {
               placeholder="State"
               className="border p-2 rounded w-full mb-2"
             />
+            {formErrors.state && <p className="text-red-500">{formErrors.state}</p>}
+
             <input
               type="text"
               value={address.pincode || ''}
@@ -194,6 +243,8 @@ const OrderPage = () => {
               placeholder="Pincode"
               className="border p-2 rounded w-full mb-2"
             />
+            {formErrors.pincode && <p className="text-red-500">{formErrors.pincode}</p>}
+            
             <div className="flex justify-end col-span-2">
               <button onClick={saveAddress} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
                 Save Address
